@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "three": "^0.128.0",
+    "three-orbit-controls": "^82.1.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
