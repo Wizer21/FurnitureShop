@@ -50,7 +50,9 @@ export default {
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas
     })
+    
     renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.outputEncoding = THREE.sRGBEncoding
   
     //const clock = new THREE.Clock()
     const tick = () =>
