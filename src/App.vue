@@ -17,7 +17,7 @@ export default {
       this.$refs.refFurniture.start()
     },
     home(){     
-
+      this.$refs.refFurniture.back()
     }
   }
 }
@@ -27,9 +27,6 @@ export default {
 body
 {
   margin: 0;
-}
-#app
-{
   overflow: hidden;
 }
 </style>
