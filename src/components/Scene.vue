@@ -96,20 +96,16 @@ export default {
     }
     tick()
 
-    // window.addEventListener('resize', () =>
-    // {
-    //     // Update sizes
-    //     sizes.width = window.innerWidth
-    //     sizes.height = window.innerHeight
+    window.addEventListener('resize', () =>
+    {
+      // Update camera
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
 
-    //     // Update camera
-    //     camera.aspect = sizes.width / sizes.height
-    //     camera.updateProjectionMatrix()
-
-    //     // Update renderer
-    //     renderer.setSize(sizes.width, sizes.height)
-    //     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    // })
+      // Update renderer
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    })
   }
 }
 </script>
@@ -117,8 +113,11 @@ export default {
 <style scoped>
 #scene
 {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
+  z-index: -1;
 }
 </style>
