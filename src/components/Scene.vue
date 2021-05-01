@@ -5,14 +5,11 @@
 
 <script>
 import * as THREE from 'three';
-//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import * as dat from 'dat.gui'
 
 export default {
   name: 'Scene',
   mounted(){
-    const gui = new dat.GUI({width: 1000})
     const canvas = document.getElementById('scene')
 
     const scene = new THREE.Scene()
@@ -25,21 +22,6 @@ export default {
     camera.position.y += 1
     scene.add(camera)
     this.$emit("camera", camera)
-
-    gui.add(camera.position, 'x').min(-3).max(3).step(0.001)
-    gui.add(camera.position, 'y').min(-3).max(3).step(0.001)
-    gui.add(camera.position, 'z').min(-3).max(3).step(0.001)
-    gui.add(camera.rotation, 'x').min(- 3.14).max(6).step(0.001)
-    gui.add(camera.rotation, 'y').min(- 3.14).max(6).step(0.001)
-    gui.add(camera.rotation, 'z').min(- 3.14).max(6).step(0.001)
-
-    const cameraCord = {
-      pos: function(){
-        console.log(camera.position);
-        console.log(camera.rotation);
-      }
-    }
-    gui.add(cameraCord, "pos" )
 
     const light = new THREE.AmbientLight( 0xffffff );
     scene.add(light);
@@ -56,8 +38,10 @@ export default {
 
     // Materials 
     const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture })  
-
     gltfLoader.load('./house.glb', gltf => {
+      //gltf.scene.children.find(child => child.name === "bake" ).material = bakedMaterial
+      //gltf.scene.children.find(child => child.name === "bakeModifier").material = new THREE.MeshBasicMaterial({ map: bakedTexture })  
+
       gltf.scene.traverse((child) =>
       {
         child.material = bakedMaterial
@@ -88,8 +72,6 @@ export default {
       gltf.scene.scale.set(0.1, 0.1, 0.1)
       scene.add(gltf.scene)
     })
-    
-    //const control = new OrbitControls(camera, canvas)
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
@@ -231,7 +213,7 @@ export default {
      * Points
      */
     const points = new THREE.Points(geometry, material)
-    points.position.y = 0.3
+    points.position.y = 0.32
     scene.add(points)
 
 
@@ -239,9 +221,6 @@ export default {
     const tick = () =>
     {
       const elapsedTime = clock.getElapsedTime()
-
-      //Update controls
-      //control.update()
 
       // Animate Galaxy
       material.uniforms.uTime.value = elapsedTime * .03

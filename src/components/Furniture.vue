@@ -95,6 +95,9 @@ export default {
       this.upadteData()    
     },
     upadteData(){
+      if (!this.camera){
+        return
+      }
       // Title
       const itemTitle = document.getElementById('itemTitle')
       itemTitle.style.clipPath = "polygon(0 0, 100% 0, 100% 0, 0 0)"
@@ -139,7 +142,30 @@ export default {
         next.style.opacity = 1
         next.style.pointerEvents = "all"
       }
+    },
+    updateBasePosition(){
+      if(window.innerWidth < 400){
+        this.furniture[0].cameraPosition[2] = -1.2
+        this.upadteData()
+      }
+      else if(window.innerWidth < 500){
+        this.furniture[0].cameraPosition[2] = -1
+        this.upadteData()
+      }
+      else if (window.innerWidth < 750){
+        this.furniture[0].cameraPosition[2] = -0.8
+        this.upadteData()
+      }    
+      else{
+        this.furniture[0].cameraPosition[2] = -0.595
+        this.upadteData()
+      }
     }
+  },
+  mounted(){
+    this.updateBasePosition()
+
+    window.addEventListener("resize", () => { this.updateBasePosition() })
   }
 }
 </script>
