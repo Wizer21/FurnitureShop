@@ -13,6 +13,8 @@
         <p>
           Start Visit  
         </p>   
+        <div id="back">          
+        </div>
       </div>
     </div>    
     <div id="home" @click="backHome">
@@ -111,6 +113,19 @@ export default {
   margin: 0;
   color: #ffffff;
   font-size: 3vw;
+}
+#back
+{
+  width: 100%;
+  height: 0.5vh;
+  clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+
+  background-color: #ffffff;  
+  transition-duration: 500ms;
+}
+#start:hover #back
+{ 
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 }
 #home
 {  

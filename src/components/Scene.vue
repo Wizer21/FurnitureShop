@@ -9,9 +9,6 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as dat from 'dat.gui'
 
-// import galaxyVertexShader from '../assets/shader/vertex.glsl'
-// import galaxyFragementShader from '../assets/shader/fragement.glsl'
-
 export default {
   name: 'Scene',
   mounted(){
@@ -75,8 +72,8 @@ export default {
       gltf.scene.children.find(child => child.name === "lightYellow" ).material = new THREE.MeshBasicMaterial({color: 0xFAEE94}) 
       gltf.scene.children.find(child => child.name === "lightYellow1" ).material = new THREE.MeshBasicMaterial({color: 0xFAEE94})
 
-      gltf.scene.children.find(child => child.name === "lightLamp" ).material = new THREE.MeshBasicMaterial({color: 0xF5F5F5}) 
-      gltf.scene.children.find(child => child.name === "lightLamp1" ).material = new THREE.MeshBasicMaterial({color: 0xF5F5F5}) 
+      gltf.scene.children.find(child => child.name === "lightLamp" ).material = new THREE.MeshBasicMaterial({color: 0xe3e3e3}) 
+      gltf.scene.children.find(child => child.name === "lightLamp1" ).material = new THREE.MeshBasicMaterial({color: 0xe3e3e3}) 
 
       // Wall
       gltf.scene.children.find(child => child.name === "wall" ).material = new THREE.MeshBasicMaterial({color: 0x010101})
@@ -105,8 +102,8 @@ export default {
     // Galaxy
     const geometry = new THREE.BufferGeometry()
     const parameters = {}
-    parameters.count = 50000
-    parameters.radius = 0.2
+    parameters.count = 25000
+    parameters.radius = 0.1
     parameters.branches = 5
     parameters.spin = 1
     parameters.randomness = 0.5
@@ -188,7 +185,7 @@ export default {
         modelPosition.x = cos(angle) * distanceToCenter;
         modelPosition.z = sin(angle) * distanceToCenter;
 
-        modelPosition.x -= 0.939;
+        modelPosition.x -= 0.9395;
         modelPosition.z -= 0.208;
 
 
@@ -226,7 +223,7 @@ export default {
       uniforms: 
       {
         uTime: { value: 0 },
-        uSize: { value: 2 * renderer.getPixelRatio()}
+        uSize: { value: 1 * renderer.getPixelRatio()}
       }
     })
 

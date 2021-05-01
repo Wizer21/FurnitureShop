@@ -26,8 +26,8 @@ export default {
       furniture: [
         {
           name: "",
-          cameraPosition: [-1.3, 0.478, -0.447],
-          cameraRotation: [0.118, 3.926, 0.118] 
+          cameraPosition: [-1.055, 0.356, -0.595],
+          cameraRotation: [0.13, 3.537, -0.014] 
         },
         {
           name: "Triangle Led",
