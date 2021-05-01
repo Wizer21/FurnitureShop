@@ -1,7 +1,7 @@
 <template>
-  <Header @start="start" @home="home" />
+  <Header @start="start" @home="home"/>
   <Furniture ref="refFurniture" />
-  <Scene />
+  <Scene @camera="camera" />
 </template>
 
 <script>
@@ -18,6 +18,9 @@ export default {
     },
     home(){     
       this.$refs.refFurniture.back()
+    },
+    camera(camera){   
+      this.$refs.refFurniture.copyCamera(camera)
     }
   }
 }

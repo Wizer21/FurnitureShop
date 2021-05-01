@@ -5,7 +5,7 @@
 
 <script>
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as dat from 'dat.gui'
 
@@ -24,12 +24,14 @@ export default {
     camera.position.z -= 2
     camera.position.y += 1
     scene.add(camera)
+    this.$emit("camera", camera)
+
     gui.add(camera.position, 'x').min(-3).max(3).step(0.001)
     gui.add(camera.position, 'y').min(-3).max(3).step(0.001)
     gui.add(camera.position, 'z').min(-3).max(3).step(0.001)
-    gui.add(camera.rotation, 'x').min(- 3.14).max(3.14).step(0.001)
-    gui.add(camera.rotation, 'y').min(- 3.14).max(3.14).step(0.001)
-    gui.add(camera.rotation, 'z').min(- 3.14).max(3.14).step(0.001)
+    gui.add(camera.rotation, 'x').min(- 3.14).max(6).step(0.001)
+    gui.add(camera.rotation, 'y').min(- 3.14).max(6).step(0.001)
+    gui.add(camera.rotation, 'z').min(- 3.14).max(6).step(0.001)
 
     const light = new THREE.AmbientLight( 0xffffff );
     scene.add(light);
@@ -78,10 +80,11 @@ export default {
       scene.add(gltf.scene)
     })
     
-    const control = new OrbitControls(camera, canvas)
+    //const control = new OrbitControls(camera, canvas)
 
     const renderer = new THREE.WebGLRenderer({
-      canvas: canvas
+      canvas: canvas,
+      antialias: true          
     })
     
     renderer.setSize(window.innerWidth, window.innerHeight)
@@ -93,7 +96,7 @@ export default {
       //const elapsedTime = clock.getElapsedTime()
 
       //Update controls
-      control.update()
+      //control.update()
 
       // Call tick again on the next frame
       window.requestAnimationFrame(tick)
