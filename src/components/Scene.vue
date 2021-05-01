@@ -17,7 +17,7 @@ export default {
 
     const scene = new THREE.Scene()
 
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 20)
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 20)
     camera.rotation.x = Math.PI / 25
     camera.rotation.y += Math.PI
 
@@ -32,6 +32,14 @@ export default {
     gui.add(camera.rotation, 'x').min(- 3.14).max(6).step(0.001)
     gui.add(camera.rotation, 'y').min(- 3.14).max(6).step(0.001)
     gui.add(camera.rotation, 'z').min(- 3.14).max(6).step(0.001)
+
+    const cameraCord = {
+      pos: function(){
+        console.log(camera.position);
+        console.log(camera.rotation);
+      }
+    }
+    gui.add(cameraCord, "pos" )
 
     const light = new THREE.AmbientLight( 0xffffff );
     scene.add(light);
@@ -65,6 +73,7 @@ export default {
       gltf.scene.children.find(child => child.name === "lightYellow1" ).material = new THREE.MeshBasicMaterial({color: 0xFAEE94})
 
       gltf.scene.children.find(child => child.name === "lightLamp" ).material = new THREE.MeshBasicMaterial({color: 0xF5F5F5}) 
+      gltf.scene.children.find(child => child.name === "lightLamp1" ).material = new THREE.MeshBasicMaterial({color: 0xF5F5F5}) 
 
       // Wall
       gltf.scene.children.find(child => child.name === "wall" ).material = new THREE.MeshBasicMaterial({color: 0x010101})

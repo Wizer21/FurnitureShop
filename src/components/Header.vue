@@ -16,9 +16,9 @@
       </div>
     </div>    
     <div id="home" @click="backHome">
-      <p>
-        H  
-      </p>   
+      <div class="button">
+        <img :src="require('../assets/home-outline.png')">  
+      </div>   
     </div>
   </div>
 </template>
@@ -55,6 +55,8 @@ export default {
   position: relative;
   height: 100vh;
   width: 100vw;
+
+  pointer-events: none;
 }
 #mainPart
 {
@@ -93,6 +95,16 @@ export default {
   position: absolute;
   top: 50%;
   left: 20%;
+
+  pointer-events: all;
+  cursor: pointer;
+
+  transition-duration: 500ms;
+}
+#start:active
+{
+  transition-duration: 50ms;
+  transform: scale(0.8);
 }
 #start p
 {  
