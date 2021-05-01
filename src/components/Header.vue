@@ -17,7 +17,7 @@
     </div>    
     <div id="home" @click="backHome">
       <div class="button">
-        <img :src="require('../assets/home-outline.png')">  
+        <img :src="require('../assets/icons/home-outline.png')">  
       </div>   
     </div>
   </div>

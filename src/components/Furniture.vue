@@ -7,10 +7,10 @@
     </div>
     <div id="navigator">
       <div class="button" @click="previous" id="previous">
-        <img :src="require('../assets/chevron-left.png')">  
+        <img :src="require('../assets/icons/chevron-left.png')">  
       </div>   
       <div class="button" @click="next" id="next">
-        <img :src="require('../assets/chevron-right.png')">  
+        <img :src="require('../assets/icons/chevron-right.png')">  
       </div>
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
       furniture: [
         {
           name: "",
-          cameraPosition: [-1.183, 0.366, -0.447],
+          cameraPosition: [-1.3, 0.478, -0.447],
           cameraRotation: [0.118, 3.926, 0.118] 
         },
         {
