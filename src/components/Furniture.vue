@@ -45,7 +45,7 @@ export default {
           cameraRotation: [0.352, 4.277, 0.188] 
         },
         {
-          name: "Smol Stool",
+          name: "Small Stool",
           cameraPosition: [-0.079, 0.212, 0.2],
           cameraRotation: [-0.489, 1.567, 0.492]  
         },
@@ -62,7 +62,8 @@ export default {
       ],
       itemPos: 1,
       itemName: "NONE",
-      camera: null
+      camera: null,
+      isInNavigation: false
     }
   },
   methods: {
@@ -77,6 +78,7 @@ export default {
       furniture.style.transform = "translateY(-100%)" 
 
       this.itemPos = 1
+      this.isInNavigation = true
       this.upadteData()
     },
     back(){
@@ -84,6 +86,7 @@ export default {
       furniture.style.transform = "translateY(0%)"
 
       this.itemPos = 0
+      this.isInNavigation = false
       this.upadteData()
     },
     previous(){
@@ -166,6 +169,23 @@ export default {
     this.updateBasePosition()
 
     window.addEventListener("resize", () => { this.updateBasePosition() })
+
+    const local = this
+    document.onkeydown = function (event) {
+      if (local.isInNavigation){
+        if (event.code == "ArrowLeft"){
+          if (local.itemPos != 0){
+            local.previous()
+          }
+        }
+        else if(event.code == "ArrowRight"){
+          if (local.itemPos != 6){
+            console.log("in");
+            local.next()
+          }
+        }
+      }
+    }
   }
 }
 </script>
