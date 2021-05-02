@@ -144,7 +144,7 @@ export default {
      * Material
      */
     const material = new THREE.ShaderMaterial({
-      depthWrite: false,
+      depthWrite: true,
       blending: THREE.AdditiveBlending,
       vertexColors: true,
       vertexShader: `
